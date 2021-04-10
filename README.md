@@ -71,7 +71,37 @@ MIT License is used in this project. [License](LICENSE)
 └── views                               # EJS & EJS partials
       └──layout
       └── pages  
-```
+├── LICENSE
+├── README.md
+├── data
+│   ├── placeHolder1.json
+│   ├── placeHolder2.json
+│   └── schema.sql
+├── node_modules
+├── package-lock.json
+├── package.json
+├── project-images
+│   ├── PlaceHolder-DBdiagram.jpg
+│   ├── placeHolder-WRRC.jpg
+│   └── placeHolder-WireFrame.jpg
+├── public
+│   ├── imgs
+│   ├── js
+│   │   └── app.js
+│   └── styles
+│       ├── base.css
+│       ├── layout.css
+│       ├── main.css
+│       ├── modules.css
+│       └── reset.css
+├── server.js
+└── views
+    ├── layout
+    │   ├── footer.ejs
+    │   ├── head.ejs
+    │   └── header.ejs
+    └── pages
+        └── index.ejs```
 
 ## Team related topics discussed below..
 

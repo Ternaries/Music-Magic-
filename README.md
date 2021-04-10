@@ -51,7 +51,6 @@ MIT License is used in this project. [License](LICENSE)
 ### A typical top-level directory layout
 
 ```
-
 ├── .gitignore             				
 ├── .eslintric.json             	 
 ├── LICENSE
@@ -84,7 +83,9 @@ MIT License is used in this project. [License](LICENSE)
     │   ├── head.ejs
     │   └── header.ejs
     └── pages
-        └── index.ejs```
+        └── index.ejs
+        
+```
 
 ## Team related topics discussed below..
 

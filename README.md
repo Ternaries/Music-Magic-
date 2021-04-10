@@ -51,26 +51,9 @@ MIT License is used in this project. [License](LICENSE)
 ### A typical top-level directory layout
 
 ```
-├── Server.js          	 			    # Serves
-├── .gitignore             				# ignore these file from git
-├── .eslintric.json             	 	# JS rules
-└── .env                                # Server Environment variables
-└── Public                              #Contains all static files
-    └── styles
-        └── reset.css
-	    └── base.css
-	    └── modules.css
-  	    └── layout.css
-        js						      	# contains all js files
-	    └── 
-	    └── 
-        HTML                  			# contains all html pages
-    	└── 
-    	└── 
-    	└──
-└── views                               # EJS & EJS partials
-      └──layout
-      └── pages  
+
+├── .gitignore             				
+├── .eslintric.json             	 
 ├── LICENSE
 ├── README.md
 ├── data

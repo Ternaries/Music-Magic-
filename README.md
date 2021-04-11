@@ -175,6 +175,10 @@ the recommendation button is a (STRECH GOAL).
 
 ![image](project-images/diagram.PNG)
 
+## WRRC 
+
+![image](project-images/WRRC.png)
+
   
 ## Code Examples 
 

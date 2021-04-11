@@ -6,7 +6,8 @@ const PORT = process.env.PORT
 const DATABASE_URL = process.env.DATABASE_URL;
 const NODE_ENV = process.env.NODE_ENV;
 
-const options = NODE_ENV === 'production' ? { connectionString: DATABASE_URL, ssl: { rejectUnauthorised: false } } : { connectionString: DATABASE_URL }
+const options = NODE_ENV === 'production' ? { connectionString: DATABASE_URL, ssl: { rejectUnauthorized: false } } : { connectionString: DATABASE_URL };
+
 
 //load libraries
 const express = require('express');

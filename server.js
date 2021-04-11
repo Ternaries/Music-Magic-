@@ -4,7 +4,7 @@
 require('dotenv').config();
 const PORT = process.env.PORT
 const DATABASE_URL = process.env.DATABASE_URL;
-const NODE_ENV = process.env.NODE_ENV
+const NODE_ENV = process.env.NODE_ENV;
 
 const options = NODE_ENV === 'production' ? { connectionString: DATABASE_URL, ssl: { rejectUnauthorised: false } } : { connectionString: DATABASE_URL }
 
@@ -31,18 +31,23 @@ app.use(express.json());
 const client = new pg.Client(options);
 client.on('error', err => { throw err });
 
+// load other modules
+const handleTest = require('./modules/handleTest.js'); //Muhannad
 
-//set routes
-app.get('/', handle);
+//API routes
+app.get('/test', handleTest);
 
-function handle(req, res) {
-  res.send('Hi');
+
+
+
+app.get('*', (req, res) => res.status(404).send('Ouch Not Found!'));
+
+function errorHandler(error, req, res) {
+    res.status(500).send(error)
 }
 
-
 client.connect().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Listening to port ${PORT}`);
-  });
+    app.listen(PORT, () => {
+        console.log(`Listening to port ${PORT}`);
+    });
 });
-

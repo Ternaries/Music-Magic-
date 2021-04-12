@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <ul>
+        <% song.forEach(value => { %>
+            <li><h2><%= value.title_short %></h2>
+            <audio controls>
+                <source src="<%=value.previewAudio %>" type="audio/mpeg">
+            </audio>
+            <h3><%= value.artist_name %></h3>
+            <img src="<%=value.artist_picture %>" alt="artistpic">
+            <img src="<%=value.cover_medium %>" alt="albumtpic">
+            <h3><%= value.albumtitle %></h3>
+            <p><%=value.lyrics%></p>
+             </li>
+       <% })%>
+    </ul>
+    </main>
+</body>
+</html>

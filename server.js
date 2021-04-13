@@ -44,13 +44,14 @@ app.get('/results', handleSearch);
 app.get('/details/:id', handleDetails);
 app.post('/addFavorites', handleFavorites);
 app.get('/favorites', showFavorites);
-app.delete('/favorites/:id',removeFavorites);
-app.get('/addComment/:id',addComment)
-app.post('/submitComment/:id',submitComment)
+app.delete('/favorites/:id', removeFavorites);
+app.get('/editSong/:id', editSong);
+app.put('/updateSong/:id', updateSong)
+    // app.post('/submitComment/:id', submitComment)
 
 function handleFavorites(req, res) {
-    let SQL = 'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;';
-    let values = [req.body.id, req.body.songName, req.body.artistName, req.body.artistImg, req.body.lyrics, req.body.audio];
+    let SQL = 'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio,comment) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *;';
+    let values = [req.body.id, req.body.songName, req.body.artistName, req.body.artistImg, req.body.lyrics, req.body.audio, req.body.comment];
     console.log(values);
     // console.log(values);
     client.query(SQL, values).then((results) => {
@@ -65,48 +66,58 @@ function handleFavorites(req, res) {
 function showFavorites(req, res) {
     const SQL = 'SELECT * FROM songslist';
     client.query(SQL).then(results => {
-        console.log(results.rows);
+        // console.log(results.rows);
         res.render('./pages/favorites', { favResults: results.rows });
     }).catch(error => errorHandler(error, req, res));
 }
 
-function removeFavorites(req,res){
+function removeFavorites(req, res) {
     const deleteId = [req.params.id];
-    const SQL='DELETE FROM songslist WHERE id=$1';
-    client.query(SQL,deleteId).then(()=>{
+    const SQL = 'DELETE FROM songslist WHERE id=$1';
+    client.query(SQL, deleteId).then(() => {
         res.redirect('/favorites')
-    }).catch((error)=>{
+    }).catch((error) => {
         console.log("no delete")
     })
 }
 
-function addComment(req,res){
-    const SQL = 'SELECT * FROM songslist WHERE id=$1';
+function editSong(req, res) {
+    const SQL = 'SELECT * FROM songslist WHERE id=$1;';
     const values = [req.params.id];
     console.log(values);
-    client.query(SQL,values).then((results)=>{
-        console.log(results.rows);
-        res.render('./pages/addComment',{song : results.rows[0]});
-        
+    client.query(SQL, values).then((results) => {
+        // console.log(results.rows);
+        res.render('./pages/editSong', { song: results.rows[0] });
 
-    }).catch((error)=>{
+
+    }).catch((error) => {
         console.log("no comment")
     })
 }
 
-function submitComment(req,res){
-    const SQL = 'INSERT INTO songslist(comment) VALUE ($1) RETURNING *; ';
-    const values = req.body.comment 
-    console.log(values)
-    client.query(SQL,values).then((results)=>{
-        // console.log(results.rows[0]);
-        res.redirect('/favorites');
-        
+'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio,comment) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *;';
 
-    }).catch((error)=>{
-        console.log("oopps")
-    })
+function updateSong(req, res) {
+
+    const SQL = 'UPDATE songslist SET title_short=$1, artist_name=$2, artist_picture=$3, lyrics=$4, audio=$5 , comment=$6 WHERE id=$7;';
+    const values = [req.body.songName, req.body.artistName, req.body.artistImg, req.body.lyrics, req.body.audio, req.body.comment, req.params.id];
+    client
+        .query(SQL, values).then((results) => res.redirect(`/favorites`))
+        .catch(err => errorHandler(err, req, res));
+
 }
+
+// function submitComment(req, res) {
+//     const SQL = `INSERT INTO songslist (comment) VALUES ($1) RETURNING *; `;
+//     const values = [req.body.comment];
+//     console.log("Line100", values)
+//     client.query(SQL, values).then((results) => {
+//         console.log(results.rows);
+//         res.redirect('/favorites');
+//     }).catch((error) => {
+//         console.log("oopps")
+//     })
+// }
 
 app.get('*', (req, res) => res.status(404).send('Ouch Not Found!'));
 

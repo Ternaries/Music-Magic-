@@ -6,5 +6,6 @@ title_short VARCHAR(255),
 artist_name VARCHAR(255),
 artist_picture VARCHAR(255),
 lyrics TEXT,
-audio VARCHAR(255)
+audio VARCHAR(255),
+comment  NOT NULL VARCHAR(255)
 );

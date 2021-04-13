@@ -47,6 +47,7 @@ app.get('/favorites', showFavorites);
 app.delete('/favorites/:id',removeFavorites);
 app.get('/addComment/:id',addComment)
 app.post('/submitComment/:id',submitComment)
+
 function handleFavorites(req, res) {
     let SQL = 'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;';
     let values = [req.body.id, req.body.songName, req.body.artistName, req.body.artistImg, req.body.lyrics, req.body.audio];

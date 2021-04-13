@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layout/head')%>
+</head>
+
+<body>
+    <%- include('../layout/header') %>
+        <main>
+            <form action="/results" method="GET">
+                <fieldset>
+                    <legend>Search for Song by name or artist </legend>
+                    <label>
+                <span>Search by artist</span>
+                <input type="radio" name="radio" value="artist">
+            </label>
+                    <label>
+                <span>Search by Song</span>
+                <input type="radio" name="radio" value="song">
+            </label>
+                    <label>
+                <span>Search </span>
+                <input type="text" name="search" value="search">
+            </label>
+                    <button>Submit</button>
+                </fieldset>
+            </form>
+        </main>
+        <footer></footer>
+</body>
+
+</html>

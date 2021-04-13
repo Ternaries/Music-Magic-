@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layout/head') %>
+</head>
+
+<body>
+    <%- include('../layout/header') %>
+        <main>
+            <ul>
+                <% song.forEach(value => { %>
+                    <li>
+                        <h2>
+                            <%= value.title_short %>
+                        </h2>
+                        <h3>
+                            <%= value.artist_name %>
+                        </h3>
+                        <img src="<%=value.artist_picture %>" alt="artistpic">
+                        <form action="/details/<%=value.id %>" method="GET">
+                            <button>View Details</button>
+                        </form>
+                    </li>
+
+                    <% })%>
+            </ul>
+        </main>
+</body>
+
+</html>

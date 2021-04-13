@@ -33,40 +33,39 @@ const client = new pg.Client(options);
 client.on('error', err => { throw err });
 
 // load other modules
-// const handleTest = require('./modules/handleTest.js'); //Muhannad
-// const handleSearch = require('./modules/handleSearch.js'); //Reem-Rawan
+const handleHomePage = require('./modules/handleHomePage.js');
+const handleSearch = require('./modules/handleSearch.js');
+const handleDetails = require('./modules/handleDetails.js');
+// const handleFavorites = require('./modules/handleFavorites')
 
 //API routes
-// app.get('/test', handleTest);
+app.get('/', handleHomePage)
 app.get('/results', handleSearch);
+app.get('/details/:id', handleDetails);
+app.post('/addFavorites', handleFavorites);
+app.get('/favorites', showFavorites);
 
-function handleSearch (req ,res){
-const url = `https://api.deezer.com/search?q=${req.query.search}`;
-console.log(req.query.search);
-console.log(url);
-superagent.get(url).then((data)=>{
-    // res.send(data.body);
-    console.log(data.body)
-    const songs = data.body.data.map(values =>{
-        return new Songs (values); 
-    })
-    res.render('./pages/results', {song : songs });
-}).catch((error) =>{
-    res.status(500).send(error)
-  })
-
+function handleFavorites(req, res) {
+    let SQL = 'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;';
+    let values = [req.body.id, req.body.songName, req.body.artistName, req.body.artistImg, req.body.lyrics, req.body.audio];
+    console.log(values);
+    // console.log(values);
+    client.query(SQL, values).then((results) => {
+            console.log(results.rows);
+            res.redirect('/favorites');
+        })
+        .catch((err) => {
+            console.log("ouch!!")
+        })
 }
 
-function Songs(data){
-    this.id = data.id;
-    this.title_short = data.title_short ? data.title_short : 'No Title Was Found' ;
-    this.previewAudio = data.preview ? data.preview : 'No Audio preview Was Found' ;
-    // this.lyrics = lyrics;
-    this.artist_name = data.artist.name? data.artist.name : 'No Artist Name Was Found' ; 
-    this.artist_picture = data.artist.picture_big ? data.artist.picture_big : '../project-images/no-image.png';
-    this.cover_medium = data.album.cover_medium ? data.album.cover_medium : 'No Medium Cover Was Found';
+function showFavorites(req, res) {
+    const SQL = 'SELECT * FROM songslist';
+    client.query(SQL).then(results => {
+        console.log(results.rows);
+        res.render('./pages/favorites', { favResults: results.rows });
+    }).catch(error => errorHandler(error, req, res));
 }
-
 
 app.get('*', (req, res) => res.status(404).send('Ouch Not Found!'));
 

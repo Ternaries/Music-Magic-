@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%-include('../layout/head')%>
+</head>
+
+<body>
+    <header>
+        <%- include('../layout/header')%>
+    </header>
+    <main>
+        <section>
+            <% favResults.forEach(value=>{ %>
+                <div>
+                    <h3>
+                        <%=value.title_short%>
+                    </h3>
+                    <p>
+                        <%=value.artist_name%>
+                    </p>
+                    <img src="<%=value.artist_picture%>" alt="">
+
+                    <button onclick="window.location.href = '/details/<%=value.id%>';">View Details</button>
+                </div>
+                <%})%>
+        </section>
+    </main>
+</body>
+
+</html>

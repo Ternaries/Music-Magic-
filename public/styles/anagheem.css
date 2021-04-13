@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+*{
+    background-color: #ffe3fe;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: x-large;
+
+}
+
+#title{
+    text-align: center;
+
+}
+
+#name{
+    text-align: center;
+}
+
+#img{
+    width: 35%;
+    height: 35%;
+    position: absolute;
+    left: 474px;
+    top: 213px
+}
+
+#audio{
+    position: absolute;
+    left: 599px;
+    top: 450px;
+    filter: sepia(20%) saturate(70%) grayscale(3) contrast(99%) invert(12%);
+    width: 200px;
+    height: 25px;
+   
+}
+
+#remove{
+    position: absolute;
+    left: 726px;
+    top: 480px;
+    background-color: #93329e;
+
+    border-radius: 10px;
+}
+#remove:hover{
+ color:#ffe3fe;
+ background-color: #b4aee8;
+}
+#update{
+    position: absolute;
+    left: 396px;
+    top: 480px;
+    background-color: #93329e;
+    border-radius: 10px;
+}
+
+#update:hover{
+    color: #ffe3fe;
+    background-color: #b4aee8;
+   }

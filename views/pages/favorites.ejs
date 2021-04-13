@@ -3,6 +3,7 @@
 
 <head>
     <%-include('../layout/head')%>
+    <link rel="stylesheet" href="./styles/anagheem.css">
 </head>
 
 <body>
@@ -13,18 +14,20 @@
         <section>
             <% favResults.forEach(value=>{ %>
                 <div>
-                    <h3>
+                    <h3 id="title">
                         <%=value.title_short%>
                     </h3>
-                    <p>
+                    <p id="name">
                         <%=value.artist_name%>
                     </p>
-                    <img src="<%=value.artist_picture%>" alt="">
+            
+                    <img id="img" src="<%=value.artist_picture%>" alt="">
+               
                     <p>
                         <%= value.lyrics%>
                     </p>
 
-                    <audio controls>
+                    <audio controls id="audio">
                         <source src="<%=value.audio %>" type="audio/mpeg">
                     </audio>
                     <p>
@@ -35,11 +38,11 @@
                     <!-- <button onclick="window.location.href = '/details/<%=value.id%>';">View Details</button> -->
                 </div>
                 <form action="/favorites/<%=value.id %>?_method=delete" method="POST">
-                    <button>Remove From favorites </button>
+                    <button id="remove">Remove From favorites </button>
                 </form>
 
                 <form action="/editSong/<%=value.id %>">
-                    <button>Update Song Details</button>
+                    <button id="update">Update Song Details</button>
                 </form>
 
                 <%})%>

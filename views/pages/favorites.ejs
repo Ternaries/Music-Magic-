@@ -20,23 +20,26 @@
                         <%=value.artist_name%>
                     </p>
                     <img src="<%=value.artist_picture%>" alt="">
-                    <p> 
+                    <p>
                         <%= value.lyrics%>
                     </p>
 
                     <audio controls>
                         <source src="<%=value.audio %>" type="audio/mpeg">
                     </audio>
+                    <p>
+                        <%=value.comment%>
+                    </p>
 
 
                     <!-- <button onclick="window.location.href = '/details/<%=value.id%>';">View Details</button> -->
                 </div>
                 <form action="/favorites/<%=value.id %>?_method=delete" method="POST">
-                 <button>Remove From favorites </button>
+                    <button>Remove From favorites </button>
                 </form>
 
-                <form action="/addComment/<%=value.id %>">
-                    <button>Add Comment</button>
+                <form action="/editSong/<%=value.id %>">
+                    <button>Update Song Details</button>
                 </form>
 
                 <%})%>

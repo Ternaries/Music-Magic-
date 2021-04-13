@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../layout/head') %>
+</head>
+
+<body>
+    <%- include('../layout/header') %>
+        <main>
+            <form action="/updateSong/<%=song.id%>?_method=PUT" method="POST">
+                <ul>
+                    <li>
+                        <input type="hidden" name="id" value="<%=song.id%>">
+                        <input type="hidden" name="songName" value="<%= song.title_short %>">
+                        <input type="hidden" name="artistImg" value="<%=song.artist_picture %>">
+                        <input type="hidden" name="audio" value="<%=song.previewAudio %>">
+                        <label for="lyrics">Edit song lyrics</label>
+                        <textarea type="text" name="lyrics" id="lyrics" placeholder=" <%=song.lyrics%>"></textarea>
+                        <label for="comment">Comment:</label>
+                        <input type="text" name="comment" id="comment" placeholder="Edit your comment here!">
+                        <button type="submit">Submit</button>
+                    </li>
+                </ul>
+            </form>
+        </main>
+</body>
+
+</html>

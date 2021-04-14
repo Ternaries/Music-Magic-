@@ -36,6 +36,7 @@ client.on('error', err => { throw err });
 const handleHomePage = require('./modules/handleHomePage.js');
 const handleSearch = require('./modules/handleSearch.js');
 const handleDetails = require('./modules/handleDetails.js');
+const { restart } = require('nodemon');
 // const handleFavorites = require('./modules/handleFavorites')
 
 //API routes
@@ -47,7 +48,12 @@ app.get('/favorites', showFavorites);
 app.delete('/favorites/:id', removeFavorites);
 app.get('/editSong/:id', editSong);
 app.put('/updateSong/:id', updateSong)
-    // app.post('/submitComment/:id', submitComment)
+app.get('/about', aboutUs);
+// app.post('/submitComment/:id', submitComment)
+
+function aboutUs(req, res) {
+    res.render('./pages/about')
+}
 
 function handleFavorites(req, res) {
     let SQL = 'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio,comment) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *;';
@@ -55,9 +61,9 @@ function handleFavorites(req, res) {
     console.log(values);
     // console.log(values);
     client.query(SQL, values).then((results) => {
-            console.log(results.rows);
-            res.redirect('/favorites');
-        })
+        console.log(results.rows);
+        res.redirect('/favorites');
+    })
         .catch((err) => {
             console.log("ouch!!")
         })

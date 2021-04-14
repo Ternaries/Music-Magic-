@@ -3,17 +3,19 @@
 
 <head>
     <%-include('../layout/head')%>
-    <link rel="stylesheet" href="./styles/anagheem.css">
+    <link rel="stylesheet" href="styles/anagheem.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
     <header>
         <%- include('../layout/header')%>
     </header>
-    <main>
-        <section>
-            <% favResults.forEach(value=>{ %>
-                <div>
+    <main id="flexItem">
+        <% favResults.forEach(value=>{ %>
+            <section>
+                <div class="fav">
                     <h3 id="title">
                         <%=value.title_short%>
                     </h3>
@@ -23,30 +25,28 @@
             
                     <img id="img" src="<%=value.artist_picture%>" alt="">
                
-                    <p>
+                    <p id="lyrics">
                         <%= value.lyrics%>
                     </p>
 
                     <audio controls id="audio">
                         <source src="<%=value.audio %>" type="audio/mpeg">
                     </audio>
-                    <p>
+                    <p id="comment">
                         <%=value.comment%>
                     </p>
-
-
-                    <!-- <button onclick="window.location.href = '/details/<%=value.id%>';">View Details</button> -->
+                    <form action="/favorites/<%=value.id %>?_method=delete" method="POST">
+                        <button id="remove" title="Delete From Favorites"> <i class="fas fa-trash-alt"></i></button>
+                    </form>
+                    
+                    <form action="/editSong/<%=value.id %>">
+                        <button id="update" ><i class="fas fa-edit"></i>
+                            
+                        </button>
+                    </form>
                 </div>
-                <form action="/favorites/<%=value.id %>?_method=delete" method="POST">
-                    <button id="remove">Remove From favorites </button>
-                </form>
-
-                <form action="/editSong/<%=value.id %>">
-                    <button id="update">Update Song Details</button>
-                </form>
-
+            </section>
                 <%})%>
-        </section>
     </main>
     <%-include('../layout/footer')%>
 </body>

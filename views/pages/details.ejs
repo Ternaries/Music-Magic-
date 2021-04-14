@@ -13,24 +13,29 @@
                     <li>
                         <input type="hidden" name="id" value="<%=song.id%>">
                         <input type="hidden" name="songName" value="<%= song.title_short %>">
-                        <p>
-                            <%song.title_short%>
+                        <p id="song-name">
+                            <%=song.title_short%>/
+                       
                         </p>
-                        <input type="hidden" name="artistImg" value="<%=song.artist_picture %>"><img src="<%=song.artist_picture %>">
                         <input type="hidden" name="artistName" value="<%= song.artist_name %>">
-                        <p>
+                        <p id="artist_name">
                             <%= song.artist_name %>
-                        </p>
+                        </p><br>
+                        <input type="hidden" name="artistImg" value="<%=song.artist_picture %>"><img src="<%=song.artist_picture %>">
+                        <div id="all-fav">
+                            <p id="fav-p">Add To My Favorites</p>
+                            <button type="submit"><i class="far fa-star"></i></button>
+
+                        </div>
+                        <input type="hidden" name="audio" value="<%=song.previewAudio %>">
+                        <audio controls>
+                            <source src="<%=song.previewAudio %>" type="audio/mpeg">
+                        </audio><br><br><br>
                         <input type="hidden" name="lyrics" value=" <%=song.lyrics%>">
                         <p id="lyrics">
                             <%=song.lyrics%>
                         </p>
-                        <input type="hidden" name="audio" value="<%=song.previewAudio %>">
-                        <audio controls>
-                            <source src="<%=song.previewAudio %>" type="audio/mpeg">
-                        </audio>
                         <input type="text" name="comment" placeholder="leave your comment here!"> </input>
-                        <button type="submit"><i class="far fa-star"></i></button>
                              
                     </li>
                 </ul>

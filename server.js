@@ -95,8 +95,6 @@ function editSong(req, res) {
     })
 }
 
-'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio,comment) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *;';
-
 function updateSong(req, res) {
 
     const SQL = 'UPDATE songslist SET title_short=$1, artist_name=$2, artist_picture=$3, lyrics=$4, audio=$5 , comment=$6 WHERE id=$7;';

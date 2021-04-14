@@ -3,21 +3,21 @@
 
 <head>
     <%- include('../layout/head') %>
-    <link rel="stylesheet" href="./styles/reem.css">
+        <link rel="stylesheet" href="./styles/reem.css">
 </head>
 
 <body>
     <%- include('../layout/header') %>
         <main>
- <div class = "row">
+            <div class="row">
                 <% song.forEach(value => { %>
-                              
-                       <div class="card">
-                        
+
+                    <div class="card">
+
                         <div class="imgBox">
-                        <img src="<%=value.artist_picture %>" alt="artistpic" height="240px" width="240px">
-                    </div>
-                    <h2>
+                            <img src="<%=value.artist_picture %>" alt="artistpic" height="240px" width="240px">
+                        </div>
+                        <h2>
                             <%= value.title_short %>
                         </h2>
                         <h3>
@@ -27,12 +27,16 @@
                             <button class="btn">View Details</button>
                         </form>
                     </div>
-             
 
-                    <% })%>      
-                </div>
-            
+
+                    <% })%>
+            </div>
+
         </main>
+
+        <%- include('../layout/footer') %>
+
+
 </body>
 
 </html>

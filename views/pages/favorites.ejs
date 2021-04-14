@@ -9,46 +9,44 @@
 </head>
 
 <body>
-    <header>
-        <%- include('../layout/header')%>
-    </header>
-    <main id="flexItem">
-        <% favResults.forEach(value=>{ %>
+    <%- include('../layout/header')%>
+        <main>
             <section>
-                <div class="fav">
-                    <h3 id="title">
-                        <%=value.title_short%>
-                    </h3>
-                    <p id="name">
-                        <%=value.artist_name%>
-                    </p>
-            
-                    <img id="img" src="<%=value.artist_picture%>" alt="">
-               
-                    <p id="lyrics">
-                        <%= value.lyrics%>
-                    </p>
+                <% favResults.forEach(value=>{ %>
+                    <div>
+                        <h3>
+                            <%=value.title_short%>
+                        </h3>
+                        <p>
+                            <%=value.artist_name%>
+                        </p>
+                        <img src="<%=value.artist_picture%>" alt="">
+                        <p>
+                            <%= value.lyrics%>
+                        </p>
 
-                    <audio controls id="audio">
+                        <audio controls>
                         <source src="<%=value.audio %>" type="audio/mpeg">
                     </audio>
-                    <p id="comment">
-                        <%=value.comment%>
-                    </p>
+                        <p>
+                            <%=value.comment%>
+                        </p>
+
+
+                        <!-- <button onclick="window.location.href = '/details/<%=value.id%>';">View Details</button> -->
+                    </div>
                     <form action="/favorites/<%=value.id %>?_method=delete" method="POST">
-                        <button id="remove" title="Delete From Favorites"> <i class="fas fa-trash-alt"></i></button>
+                        <button>Remove From favorites </button>
                     </form>
-                    
+
                     <form action="/editSong/<%=value.id %>">
-                        <button id="update" ><i class="fas fa-edit"></i>
-                            
-                        </button>
+                        <button>Update Song Details</button>
                     </form>
-                </div>
+
+                    <%})%>
             </section>
-                <%})%>
-    </main>
-    <%-include('../layout/footer')%>
+        </main>
+        <%-include('../layout/footer')%>
 </body>
 
 </html>

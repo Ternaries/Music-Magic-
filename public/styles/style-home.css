@@ -101,8 +101,9 @@ sub {
 img {
     display: block;
     border: 0;
-    width: 100%;
+    width: 95%;
     height: auto;
+    margin: 0 auto;
 }
 
 svg:not(:root) {
@@ -347,8 +348,8 @@ big {
 
 @media screen and (min-width: 700px) {
     .two-column {
-        column-count: 2;
         column-gap: 2.4em;
+        text-align: center;
     }
     p.two-column {
         font-size: 1em;
@@ -896,7 +897,7 @@ Front page styles
 
 form {
     width: 50%;
-    margin: 0 auto;
+    margin: 30px auto;
     position: relative;
     left: 52px;
 }
@@ -989,7 +990,7 @@ form.example::after {
     display: block;
     height: 4em;
     content: "";
-    background: #002254 url('images/square_bg.svg') repeat;
+    background: #440a67 url('images/square_bg.svg') repeat;
 }
 
 
@@ -1200,7 +1201,7 @@ Footer styles
 }
 
 .social-nav {
-    margin: 4em -3em 0;
+    margin: 1em 0;
     padding: 1em 0;
     background: #440a67;
 }

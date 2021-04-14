@@ -84,7 +84,7 @@ function removeFavorites(req, res) {
 function editSong(req, res) {
     const SQL = 'SELECT * FROM songslist WHERE id=$1;';
     const values = [req.params.id];
-    console.log(values);
+    // console.log(values);
     client.query(SQL, values).then((results) => {
         // console.log(results.rows);
         res.render('./pages/editSong', { song: results.rows[0] });
@@ -107,17 +107,6 @@ function updateSong(req, res) {
 
 }
 
-// function submitComment(req, res) {
-//     const SQL = `INSERT INTO songslist (comment) VALUES ($1) RETURNING *; `;
-//     const values = [req.body.comment];
-//     console.log("Line100", values)
-//     client.query(SQL, values).then((results) => {
-//         console.log(results.rows);
-//         res.redirect('/favorites');
-//     }).catch((error) => {
-//         console.log("oopps")
-//     })
-// }
 
 app.get('*', (req, res) => res.status(404).send('Ouch Not Found!'));
 

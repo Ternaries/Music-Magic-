@@ -16,14 +16,14 @@ body{
     */
     display: flex;
     align-items: center;
-  flex-wrap: wrap;
-   height: 400px;
-   padding: 20px 40px; 
-   box-sizing: border-box; 
+    flex-wrap: wrap;
+    height: 400px;
+    padding: 20px 40px; 
+    box-sizing: border-box; 
     /* width: 100%; */
-  justify-content: space-around;
-  align-content: stretch;
-   margin: 50px;
+    justify-content: space-around;
+    align-content: stretch;
+    margin: 50px;
 }
 
 .card{

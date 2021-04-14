@@ -22,21 +22,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 function handleHomePage(req, res) {
-    // for (let i = 0; i < 5; i++) {
-     
-        // const VQ=axiose.get('https://api.kanye.rest')
-        //  .then(res=>{
-        //      const Qresult=res.data
-             // console.log(res.data);
-             // res.send(res.data.quote)
-            //  console.log(quotes);
-            //  return Qresult
-            // })
-            // res.render('pages/index',{quotes:VQ})
-               res.render('pages/index')
-   
-   
+    const quotes=[];
+    for (let i = 0; i < 5; i++) {
 
+    quotes.push(axiose.get('https://api.kanye.rest')
+    .then(res=>{
+
+       return res.data.quote;
+      
+       }).catch(err => console.log("ouch!"))
+    );
+
+   }
+   Promise.all(quotes).then(quote => {
+    res.render('pages/index', {quotes:quote});
+    console.log(quotes);
+   })
 }
 
 

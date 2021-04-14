@@ -22,7 +22,7 @@
                             <%= song.artist_name %>
                         </p>
                         <input type="hidden" name="lyrics" value=" <%=song.lyrics%>">
-                        <p>
+                        <p id="lyrics">
                             <%=song.lyrics%>
                         </p>
                         <input type="hidden" name="audio" value="<%=song.previewAudio %>">
@@ -30,7 +30,8 @@
                             <source src="<%=song.previewAudio %>" type="audio/mpeg">
                         </audio>
                         <input type="text" name="comment" placeholder="leave your comment here!"> </input>
-                        <button type="submit">Add to favorites</button>
+                        <button type="submit"><i class="far fa-star"></i></button>
+                             
                     </li>
                 </ul>
             </form>

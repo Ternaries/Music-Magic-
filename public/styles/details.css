@@ -1,0 +1,62 @@
+header nav img {
+    width: 20px;
+}
+/*favorites icon*/
+button[type=submit] {
+    background-color: #440a67;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-color: white;
+    border: 3px solid;
+  }
+button[type=submit] :hover{
+    background-color: #440a67;
+}
+body{
+    background-color: #ffe3fe;
+    
+}
+#lyrics{
+    font-family: 'East Sea Dokdo', cursive;
+    font-size: 25px;
+    color: black;
+    background-color: #ffe3fe;
+
+}
+  li{
+    box-shadow: 0 4px 8px 0 #b4aee8;
+    max-width: 600px;
+    margin: auto;
+
+  }
+  li img{
+      float: left;
+      width: 150px;
+  }
+  li p{
+      font-size: 30px;
+      color: white;
+      background-color: #440a67;
+
+  }
+  input[name="comment"]{
+      margin: 20px;
+      padding: 50px;
+      box-sizing: border-box;
+      border: 3px solid #b4aee8;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+  }
+  input[name="comment"]:focus{
+    margin: 20px;
+    padding: 50px;
+    border: 3px solid #440a67;
+
+}
+/* audio {
+    filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+} */

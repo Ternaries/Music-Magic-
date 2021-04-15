@@ -46,8 +46,13 @@ app.post('/addFavorites', handleFavorites);
 app.get('/favorites', showFavorites);
 app.delete('/favorites/:id', removeFavorites);
 app.get('/editSong/:id', editSong);
-app.put('/updateSong/:id', updateSong)
-    // app.post('/submitComment/:id', submitComment)
+app.put('/updateSong/:id', updateSong);
+app.get('/about', aboutUs);
+// app.post('/submitComment/:id', submitComment)
+
+function aboutUs(req, res) {
+    res.render('./pages/about')
+}
 
 function handleFavorites(req, res) {
     let SQL = 'INSERT INTO songslist (id,title_short,artist_name,artist_picture,lyrics,audio,comment) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *;';

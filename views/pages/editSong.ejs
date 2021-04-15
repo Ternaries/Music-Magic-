@@ -3,6 +3,7 @@
 
 <head>
     <%- include('../layout/head') %>
+        <link rel="stylesheet" href="/styles/editSong.css">
 </head>
 
 <body>
@@ -15,11 +16,16 @@
                         <input type="hidden" name="songName" value="<%= song.title_short %>">
                         <input type="hidden" name="artistImg" value="<%=song.artist_picture %>">
                         <input type="hidden" name="audio" value="<%=song.previewAudio %>">
-                        <label for="lyrics">Edit song lyrics</label>
-                        <textarea type="text" name="lyrics" id="lyrics" placeholder=" <%=song.lyrics%>"></textarea>
-                        <label for="comment">Comment:</label>
-                        <input type="text" name="comment" id="comment" placeholder="Edit your comment here!">
-                        <button type="submit">Submit</button>
+                        <div class="container">
+                            <label class="potato" for="lyrics">Edit song lyrics</label>
+                            <textarea type="text" name="lyrics" id="lyrics" placeholder=" <%=song.lyrics%>"></textarea><br>
+
+                            <label for="comment">Comment:</label>
+                            <input type="text" name="comment" id="comment" placeholder="Edit your comment here!"><br>
+                            <button type="submit">Submit</button>
+                        </div>
+
+
                     </li>
                 </ul>
             </form>
